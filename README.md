@@ -13,3 +13,6 @@ A responsive cryptocurrency landing page that displays live prices of Bitcoin, E
 - CSS3
 - JavaScript (ES6)
 - REST API
+
+## 📸 Preview
+<img width="959" height="437" alt="image" src="https://github.com/user-attachments/assets/f084059a-8b69-478f-a1d1-4f326fc697da" />
