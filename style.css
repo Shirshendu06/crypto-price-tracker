@@ -1,0 +1,304 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0f0f1b;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background: url("images/background.png") no-repeat center center/cover;
+}
+
+/* Dark overlay */
+.container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.4));
+    z-index: 1;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 6%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    width: 50px;
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: #ff960b;
+}
+
+/* =========================
+   BUTTON STYLE
+========================= */
+.btn {
+    margin-left: auto;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    background: linear-gradient(135deg, #ff960b, #ff5e62);
+    box-shadow: 0 5px 25px rgba(255, 150, 11, 0.4);
+
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(255, 150, 11, 0.6);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    transform: translateY(-50%);
+    max-width: 650px;
+    z-index: 2;
+    animation: fadeIn 1.2s ease forwards;
+    opacity: 0;
+}
+
+.content h1 {
+    font-size: 70px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    font-weight: 800;
+
+    background: linear-gradient(90deg, #ff960b, #ff5e62);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    color: #ddd;
+}
+
+/* =========================
+   COIN WIDGETS
+========================= */
+.coin-list {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.coin {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    min-width: 240px;
+    padding: 18px 24px;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    transition: all 0.3s ease;
+    animation: float 5s ease-in-out infinite;
+}
+
+/* Floating delay */
+.coin:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.coin:nth-child(3) {
+    animation-delay: 2s;
+}
+
+.coin:hover {
+    transform: translateY(-6px);
+    border: 1px solid rgba(255, 150, 11, 0.5);
+    box-shadow: 0 12px 30px rgba(255, 150, 11, 0.2);
+}
+
+/* Glow effect */
+.coin::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(255, 150, 11, 0.25), transparent 70%);
+    top: -60px;
+    right: -60px;
+    z-index: 0;
+}
+
+.coin>* {
+    position: relative;
+    z-index: 1;
+}
+
+.coin img {
+    width: 45px;
+    height: 45px;
+}
+
+.coin h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.coin p {
+    font-size: 14px;
+    color: #ff960b;
+}
+
+/* Price states */
+.coin.up h3 {
+    color: #00ff9d;
+}
+
+.coin.down h3 {
+    color: #ff4d4d;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-45%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .content {
+        left: 8%;
+        right: 8%;
+        max-width: 100%;
+    }
+
+    .content h1 {
+        font-size: 48px;
+    }
+
+    .coin-list {
+        right: 8%;
+        bottom: 6%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .content h1 {
+        font-size: 34px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+
+    .coin-list {
+        position: static;
+        margin: 40px 8%;
+    }
+}
